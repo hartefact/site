@@ -26,6 +26,18 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000).
 
+## Deploys
+
+- **Repo:** https://github.com/hartefact/site (public, owned by the `hartefact` GitHub Organization).
+- **Host:** Vercel (Hobby tier, scope `reid-hartes-projects`, project `site`).
+- **Production URL:** https://site-reid-hartes-projects.vercel.app
+- **Workflow:**
+  - Pushes to `main` → automatic production deploy.
+  - Pushes to any other branch / PR → automatic preview deploy on its own URL.
+  - Build command, install command, and output dir are auto-detected from Next.js — no `vercel.json` needed for Phase 1.
+- **Deployment protection:** New Hobby projects ship with Vercel Authentication enabled, which puts the live site behind Vercel SSO (HTTP 401 for anonymous visitors). To make the site publicly browseable, in the Vercel dashboard go to **Project → Settings → Deployment Protection → Vercel Authentication** and set it to **Disabled** (or scope it to "Only Preview Deployments" if you want the production URL public but previews gated). Re-enable any time before launch if you want a soft-launch window.
+- **Custom domain (later):** when `hartefact.com` is registered, add it under **Project → Settings → Domains** and point the registrar's DNS at Vercel; production deploys will then serve from the apex domain automatically.
+
 ## Logos
 
 - **Source assets:** `src/components/funnel_logo.png`, `src/components/name_logo.png`, `src/components/hartefact_wordmark.png`
