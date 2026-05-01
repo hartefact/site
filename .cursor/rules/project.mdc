@@ -1,0 +1,45 @@
+---
+description: Hartefact website — what this repo is, brand, stack, file map, content conventions
+alwaysApply: true
+---
+
+# Hartefact website — project context
+
+This is the public-facing marketing site for **Hartefact**, an independent QA framework and benchmarking authority for AI-generated visual content (image, video, print-on-demand). The site's job is to publish methodology, build authority, and capture pilot inquiries while the underlying QA pipeline is in active build (Phase 1). It is **not** a product surface.
+
+## Brand canon
+
+- **In running prose, metadata, page copy, alt text, code identifiers, comments, agent output:** `Hartefact` (lowercase `f`).
+- **In the wordmark/logo image** (`public/logo/hartefact_wordmark.png`): the visual rendering is `HarteFact` (capital `F`). The image is approved as-is. Don't try to "fix" the casing of the image; the dual convention is intentional — the wordmark is a logotype, the prose is a name.
+- The descriptor `for the Digital Visual Arts` is a tagline, not part of the name. The legacy form `HarteFact Digital` (capital F + suffix) is deprecated everywhere except: (a) the legal entity name, (b) the source-folder name on disk (`Hartefact_Digital/`), (c) historical/transitional notes that explicitly reference the rename. Do not introduce it in new copy.
+- Aliases for parsing: `HarteFact`, `HarteFact Digital`, `Hartefact Digital` all refer to the same entity. **Always render as `Hartefact` in new prose.**
+
+## Stack
+
+- Next.js 14 (App Router) · TypeScript · Tailwind CSS · Framer Motion (subtle animation only)
+- Static-rendered Markdown-equivalent pages — no CMS, no DB, no auth, no API routes in Phase 1
+- Hosted on Vercel; CI is "git push to main"
+
+## File map
+
+- `app/page.tsx` — homepage (hero + use-cases teaser + framework summary)
+- `app/methodology/page.tsx` — the nine-dimension framework, three gates
+- `app/use-cases/page.tsx` — index of audiences (creators, studios, POD); designed to scale
+- `app/pod/page.tsx` — print-on-demand addendum (linked from `/use-cases`, not the nav)
+- `app/gallery/page.tsx` — examples ("Scorecards" once per-asset scoring ships)
+- `app/contact/page.tsx` — mailto-only pilot inquiries, no backend
+- `components/layout/{Navbar,Footer}.tsx` · `components/hero/HeroSection.tsx` · `components/home/{IntroSection,UseCasesSection}.tsx`
+- `data/galleryImages.ts` — gallery data (placeholder; replace with real outputs)
+- `docs/ai-video-qa-framework.md` — public copy of the framework spec mirrored from the Obsidian vault
+
+## Content conventions
+
+- Use **dimensions**, never "domains". Nine dimensions, three gates. Codes are `D00`–`D08`.
+- POD addendum metrics map onto existing dimensions where possible (`D00`, `D01`, `D02`, `D08`, `D10`); see `app/pod/page.tsx`.
+- Voice: dry, technical, authority-first. Anti-patterns: marketing exclamation, "AI-powered", "revolutionary", "game-changing".
+- New verticals (VFX, arch-viz, music video, etc.) land as `/use-cases` cards first, then earn an addendum page (`/<vertical>`) only if the metric set is genuinely distinct.
+- A new idea earns a section before a page; a new page earns its place before a nav slot.
+
+## Source-of-truth doc
+
+The canonical framework spec lives in the Obsidian vault at `Projects/Hartefact/Hartefact - Complete AI Video & Image Quality Assurance Framework.md`. The public methodology page is a derivation. When the spec and the site disagree, the spec wins; update the site to match.

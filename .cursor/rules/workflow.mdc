@@ -1,0 +1,62 @@
+---
+description: Hartefact website — git, GitHub, Vercel deploy lifecycle, branching, revert
+alwaysApply: true
+---
+
+# Hartefact website — workflow
+
+## Where things live
+
+- **Repo:** https://github.com/hartefact/site (public, owned by the `hartefact` GitHub Organization).
+- **Host:** Vercel — scope `reid-hartes-projects`, project `site`, Hobby tier.
+- **Production URL (public):** https://site-reid-hartes-projects.vercel.app
+- **Custom domain:** not yet — add `hartefact.com` under Vercel → Project → Settings → Domains once registered.
+- **Per-deploy unique URLs** like `https://site-<hash>-reid-hartes-projects.vercel.app` are **gated by Vercel auth and return 401** to anonymous visitors. Always link the production alias above (or a future custom domain), never the unique URL.
+
+## Push-to-deploy lifecycle
+
+- Push to `main` → Vercel auto-builds and replaces production within ~60 seconds.
+- Push to any other branch (or open a PR) → Vercel auto-builds a **preview** at its own URL, also gated by Vercel auth (private to the team). Use previews for risky visual or copy changes.
+- Build/install/output dirs are auto-detected from Next.js. **Do not add `vercel.json`** unless you have a specific reason.
+- Verify a deploy succeeded via the GitHub Deployments API: `gh api repos/hartefact/site/deployments --jq '.[0:3] | .[] | {sha,env: .environment, created: .created_at}'` then read the matching `/statuses`.
+
+## Branching for non-trivial changes
+
+```bash
+git checkout -b feat/<short-slug>
+# ... make changes, commit ...
+git push -u origin feat/<short-slug>
+# Vercel posts a preview URL on the PR within ~60s
+# Merge via PR when preview looks right; deletion of the branch is fine
+```
+
+For one-line copy fixes, committing straight to `main` is acceptable for now — branch protection isn't enabled yet. Once it is, all changes go through PRs.
+
+## Revert / rollback playbook
+
+In **rough order of preference** (least invasive first):
+
+1. **Vercel one-click rollback** (fastest, no git churn, ~10 seconds):
+   Vercel dashboard → project `site` → Deployments → find the last-known-good deploy → `…` menu → **"Promote to Production"**. Production URL flips immediately. The bad commit stays in git history; fix it in a follow-up.
+
+2. **`git revert`** (preferred for code: keeps history honest, triggers a fresh deploy):
+   ```bash
+   git revert <bad-sha>     # creates an inverse commit, prompts for message
+   git push origin main     # triggers a clean revert deploy
+   ```
+
+3. **`git reset --hard <good-sha>` then `git push --force`** — **DO NOT USE** unless the bad commit hasn't been pushed yet, or you've explicitly decided to rewrite shared history. It is destructive and not recoverable from the GitHub UI.
+
+If you broke production *and* the local working tree, the recovery sequence is: (a) Vercel one-click rollback to restore the live site immediately, then (b) `git reflog` locally to find the last-known-good local commit, then (c) `git revert` the bad change cleanly.
+
+## Hygiene
+
+- Never commit `.env*`, credentials, or anything in `node_modules` or `.next` — `.gitignore` covers these.
+- Run `npm run lint` and `npm run build` locally before pushing anything that touches more than copy.
+- Linter errors block the Vercel build (`next build` fails on lint errors by default).
+- The `package.json` `name` field is `hartefact` (lowercase). Do not change.
+
+## Acting on production
+
+- The Cursor agent has write access to this repo via the host's `gh` CLI. When the agent commits and pushes, it writes as the host's git identity, not as a separate "Cursor" user. Treat agent commits as your own.
+- The agent should **not** disable Vercel deployment protection programmatically, run `vercel` CLI commands, or change Vercel project settings — those are dashboard actions for the human owner.

@@ -10,6 +10,10 @@ The public-facing site for **HarteFact — Quality Management Tools and Benchmar
 - **Project context:** `src/docs/project-context.md..rtf` — mission, goals, audience, stack, content types
 - **Design intent:** `src/docs/design-intent.rtf` — visual philosophy, layout, typography, motion, anti-patterns
 
+## For agents (Cursor, Claude Code, Codex, etc.)
+
+Before touching this repo, read [`AGENTS.md`](AGENTS.md) — it has the brand canon, file map, content conventions, and the full git/GitHub/Vercel workflow including the revert playbook. Cursor users get the same content automatically via [`.cursor/rules/project.mdc`](.cursor/rules/project.mdc) and [`.cursor/rules/workflow.mdc`](.cursor/rules/workflow.mdc) on every session — those files and `AGENTS.md` are kept in sync.
+
 ## Stack
 
 - **Next.js 14** (App Router)
