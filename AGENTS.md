@@ -60,9 +60,17 @@ The canonical framework spec lives in the Obsidian vault at `Projects/Hartefact/
 
 - **Repo:** https://github.com/hartefact/site (public, owned by the `hartefact` GitHub Organization).
 - **Host:** Vercel — scope `reid-hartes-projects`, project `site`, Hobby tier.
-- **Production URL (public):** https://site-reid-hartes-projects.vercel.app
-- **Custom domain:** not yet — add `hartefact.com` under Vercel → Project → Settings → Domains once registered.
-- **Per-deploy unique URLs** like `https://site-<hash>-reid-hartes-projects.vercel.app` are gated by Vercel auth and **return 401** to anonymous visitors. Always link the production alias above (or a future custom domain), never the unique URL.
+- **Production URL (canonical, public):** **https://hartefact.org**
+- **`www.hartefact.org`** 301-redirects to the apex (configured in Vercel → Domains; the apex is primary).
+- **Vercel-assigned alias** `https://site-reid-hartes-projects.vercel.app` still works as a fallback but the canonical public URL is `hartefact.org`. New copy / docs / links should use `hartefact.org`.
+- **Per-deploy unique URLs** like `https://site-<hash>-reid-hartes-projects.vercel.app` are gated by Vercel auth and **return 401** to anonymous visitors. Always link the canonical domain, never the unique URL.
+- **Defensive registration:** `hartefact.dev` is also registered (URL-forwards to `hartefact.org`). Future technical sub-properties (`docs.hartefact.dev`, `sandbox.hartefact.dev`) can use it.
+
+### Email
+
+- **Public address:** `hello@hartefact.org` — referenced in `app/contact/page.tsx`. Forwarded to the owner's personal Gmail via Porkbun email forwarding.
+- Direct: `reid@hartefact.org` and the catch-all `*@hartefact.org` also forward to the same Gmail.
+- **Don't add an email envelope feature** (newsletter signup, contact form backend) until pilot revenue justifies it; mailto is sufficient for Phase 1.
 
 ### Push-to-deploy lifecycle
 

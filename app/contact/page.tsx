@@ -6,7 +6,7 @@ export const metadata = {
     "Pilot inquiries, methodology questions, and engagement requests for the HarteFact QA framework.",
 };
 
-const CONTACT_EMAIL = "hello@hartefact.com";
+const CONTACT_EMAIL = "hello@hartefact.org";
 const SUBJECT = "HarteFact — Pilot inquiry";
 
 const targets = [

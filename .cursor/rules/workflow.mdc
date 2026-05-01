@@ -9,9 +9,11 @@ alwaysApply: true
 
 - **Repo:** https://github.com/hartefact/site (public, owned by the `hartefact` GitHub Organization).
 - **Host:** Vercel — scope `reid-hartes-projects`, project `site`, Hobby tier.
-- **Production URL (public):** https://site-reid-hartes-projects.vercel.app
-- **Custom domain:** not yet — add `hartefact.com` under Vercel → Project → Settings → Domains once registered.
-- **Per-deploy unique URLs** like `https://site-<hash>-reid-hartes-projects.vercel.app` are **gated by Vercel auth and return 401** to anonymous visitors. Always link the production alias above (or a future custom domain), never the unique URL.
+- **Production URL (canonical, public):** **https://hartefact.org**
+- **`www.hartefact.org`** 301-redirects to the apex.
+- **Email:** `hello@hartefact.org` (referenced in `app/contact/page.tsx`); `reid@` and `*@` catch-all also forward to the owner's Gmail.
+- **Vercel-assigned alias** `https://site-reid-hartes-projects.vercel.app` still works; canonical public URL is `hartefact.org`.
+- **Per-deploy unique URLs** like `https://site-<hash>-reid-hartes-projects.vercel.app` are **gated by Vercel auth and return 401** to anonymous visitors. Always link the canonical domain, never the unique URL.
 
 ## Push-to-deploy lifecycle
 

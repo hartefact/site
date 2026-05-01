@@ -34,13 +34,19 @@ Open [http://localhost:3000](http://localhost:3000).
 
 - **Repo:** https://github.com/hartefact/site (public, owned by the `hartefact` GitHub Organization).
 - **Host:** Vercel (Hobby tier, scope `reid-hartes-projects`, project `site`).
-- **Production URL:** https://site-reid-hartes-projects.vercel.app
+- **Production URL (canonical, public):** **https://hartefact.org**
+- **`www.hartefact.org`** 301-redirects to the apex.
+- **Vercel-assigned alias:** `https://site-reid-hartes-projects.vercel.app` still resolves; the canonical URL is `hartefact.org`.
+- **Defensive domain:** `hartefact.dev` is also registered and URL-forwards to `hartefact.org`; reserved for future technical sub-properties (`docs.hartefact.dev`, etc.).
 - **Workflow:**
-  - Pushes to `main` → automatic production deploy.
-  - Pushes to any other branch / PR → automatic preview deploy on its own URL.
+  - Pushes to `main` → automatic production deploy at `hartefact.org` within ~60s.
+  - Pushes to any other branch / PR → automatic preview deploy on its own URL (gated by Vercel auth).
   - Build command, install command, and output dir are auto-detected from Next.js — no `vercel.json` needed for Phase 1.
-- **Deployment protection:** New Hobby projects ship with Vercel Authentication enabled, which puts the live site behind Vercel SSO (HTTP 401 for anonymous visitors). To make the site publicly browseable, in the Vercel dashboard go to **Project → Settings → Deployment Protection → Vercel Authentication** and set it to **Disabled** (or scope it to "Only Preview Deployments" if you want the production URL public but previews gated). Re-enable any time before launch if you want a soft-launch window.
-- **Custom domain (later):** when `hartefact.com` is registered, add it under **Project → Settings → Domains** and point the registrar's DNS at Vercel; production deploys will then serve from the apex domain automatically.
+- **Deployment protection:** Disabled for production (the site is publicly browseable). Preview deploys remain gated by Vercel auth, which is the right default. Re-enable on production via **Project → Settings → Deployment Protection → Vercel Authentication** if you ever want a soft-launch window.
+- **Custom domain (live):** Apex `hartefact.org` is connected to the project as the production environment; `www.hartefact.org` is a 301 redirect to the apex. DNS is at Porkbun:
+  - Apex: `A @ → 216.198.79.1`
+  - www: `CNAME www → ef07e185bf0f4370.vercel-dns-017.com.`
+  - SSL is auto-provisioned by Vercel (Let's Encrypt). No `vercel.json` or registrar nameserver change needed; Porkbun stays the DNS provider.
 
 ## Logos
 
@@ -95,6 +101,6 @@ Deferred until product/service revenue justifies them: pricing page, dashboards,
 
 ## Contact email
 
-`app/contact/page.tsx` uses a placeholder `hello@hartefact.com`. Update the `CONTACT_EMAIL` constant in that file (and any future locations) to the real inbound address before going public.
+`app/contact/page.tsx` uses `hello@hartefact.org` (the real inbound address). Email forwarding is configured at Porkbun: `hello@`, `reid@`, and the `*@` catch-all all forward to the owner's Gmail. To change the public address, update the `CONTACT_EMAIL` constant in that file.
 
-**Domain action item:** the placeholder assumes `hartefact.com`. If that domain is not yet owned, register it (plus defensive `.io` / `.co` / `.dev`) before public launch. The previously-referenced `hartefactdigital.com` can stay as a forwarding origin if already owned.
+**Defensive domains:** `hartefact.org` is the canonical apex; `hartefact.dev` is also registered (URL-forwards to the apex today, reserved for future technical sub-properties). `hartefact.com` is taken on the secondary market and was not pursued — the framework's authority surface is `hartefact.org`.
