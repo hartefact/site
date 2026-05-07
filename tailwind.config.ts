@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import colors from "tailwindcss/colors";
 
 const config: Config = {
   content: [
@@ -18,6 +19,13 @@ const config: Config = {
         border: {
           DEFAULT: "rgba(255,255,255,0.06)",
           hover: "rgba(255,255,255,0.12)",
+        },
+        cyan: {
+          ...colors.cyan,
+          300: "#4dfded",
+          400: "#0befde",
+          500: "#00c4b8",
+          600: "#03a19f",
         },
       },
       fontFamily: {
