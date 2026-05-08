@@ -67,7 +67,7 @@ export function IntroSection() {
               key={id}
               className="rounded-lg border border-border bg-surface px-4 py-3 transition-colors hover:border-border-hover"
             >
-              <p className="font-mono text-[10px] uppercase tracking-wider text-zinc-500">
+              <p className="font-mono text-xs text-cyan-400/70">
                 D{id.toString().padStart(2, "0")}
               </p>
               <p className="mt-0.5 text-sm font-medium text-zinc-100">
