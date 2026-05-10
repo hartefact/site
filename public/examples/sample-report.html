@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HarteFact QA Report — Standard Web Image (Landscape Target)</title>
+  <title>HarteFact QA Report — Instagram Feed Image (Square/Portrait)</title>
   <style>
     :root {
       --bg-primary: #0a0a0a;
@@ -31,10 +31,9 @@
     header {
       position: sticky;
       top: 0;
+      z-index: 10;
       background: var(--bg-primary);
-      z-index: 100;
-      padding: 2rem 0 1.25rem 0;
-      margin-bottom: 2rem;
+      padding: 12px 20px;
       border-bottom: 1px solid var(--border);
     }
     h1 {
@@ -66,12 +65,14 @@
     .filter-btn.filter-active-fail { border-color: var(--status-fail); color: var(--status-fail); }
     .filter-btn.filter-active-pass { border-color: var(--status-pass); color: var(--status-pass); }
     .summary {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 24px 0 2rem 0;
     }
     .summary-card {
+      flex: 1 1 120px;
+      min-width: 100px;
       background: var(--bg-surface);
       border: 1px solid var(--border);
       border-radius: 10px;
@@ -102,7 +103,12 @@
     .summary-dot-fail { background: var(--status-fail); }
     .summary-card.pass .value { color: var(--status-pass); }
     .summary-card.fail .value { color: var(--status-fail); }
-    table {
+    .table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    table.results-table {
+      min-width: 700px;
       width: 100%;
       border-collapse: collapse;
       font-size: 0.9rem;
@@ -111,7 +117,7 @@
       overflow: hidden;
       border: 1px solid var(--border);
     }
-    th {
+    .results-table th {
       text-align: left;
       padding: 0.85rem 1rem;
       background: var(--bg-card);
@@ -119,13 +125,26 @@
       font-weight: 600;
       border-bottom: 1px solid var(--border);
     }
-    td {
+    .results-table thead th:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 3;
+      background: var(--bg-card);
+    }
+    .results-table td {
       padding: 0.75rem 1rem;
       border-bottom: 1px solid var(--border);
       vertical-align: top;
     }
-    tr:last-child td { border-bottom: none; }
-    tbody tr:hover { background: var(--bg-surface); }
+    .results-table td:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 2;
+      background: var(--bg-card);
+    }
+    .results-table tr:last-child td { border-bottom: none; }
+    .results-table tbody tr:hover { background: var(--bg-surface); }
+    .results-table tbody tr:hover td:first-child { background: var(--bg-surface); }
     .status-pass { color: var(--status-pass); font-weight: 600; }
     .status-fail { color: var(--status-fail); font-weight: 600; }
     .detail-ok { color: var(--text-secondary); }
@@ -152,7 +171,7 @@
       </div>
       <div>
         <h1>HarteFact QA Report</h1>
-        <p class="meta"><strong>Run:</strong> 2026-05-07 13:06:23 · <strong>Preset:</strong> Standard Web Image (Landscape Target)</p>
+        <p class="meta"><strong>Run:</strong> 2026-05-10 13:23:48 · <strong>Preset:</strong> Instagram Feed Image (Square/Portrait)</p>
 
     <div class="filter-bar">
       <button type="button" class="filter-btn filter-active-all" data-filter="all">Show All</button>
@@ -165,20 +184,21 @@
     <section class="summary" aria-label="Summary">
       <div class="summary-card">
         <div class="label">Total processed</div>
-        <div class="value">36</div>
+        <div class="value">23</div>
       </div>
       <div class="summary-card pass">
         <div class="label">Passed</div>
-        <div class="value"><span class="summary-dot summary-dot-pass" aria-hidden="true"></span>22</div>
+        <div class="value"><span class="summary-dot summary-dot-pass" aria-hidden="true"></span>13</div>
       </div>
       <div class="summary-card fail">
         <div class="label">Failed</div>
-        <div class="value"><span class="summary-dot summary-dot-fail" aria-hidden="true"></span>14</div>
+        <div class="value"><span class="summary-dot summary-dot-fail" aria-hidden="true"></span>10</div>
       </div>
     </section>
 
     <section aria-label="Details">
-      <table>
+      <div class="table-scroll">
+      <table class="results-table">
         <thead>
           <tr>
             <th>File Name</th>
@@ -188,44 +208,32 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>C6E3F73A-0394-40AC-B2CB-8FC10C03E45D.png → certified_C6E3F73A-0394-40AC-B2CB-8FC10C03E45D.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="604e9ff6-4ef8-45b1-8935-b3c7fc1a3542">604e9ff6-4ef8-45b1-8935-b3c7fc1a3542</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>FullSizeRender 2.jpeg → certified_FullSizeRender 2.jpeg</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="a73a1cae-b3af-4b9c-8aae-76bef5c38f1a">a73a1cae-b3af-4b9c-8aae-76bef5c38f1a</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>FullSizeRender 3.jpeg → certified_FullSizeRender 3.jpeg</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="f0733bf6-eaef-4925-a720-7ae2fff81ec0">f0733bf6-eaef-4925-a720-7ae2fff81ec0</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>FullSizeRender 4.jpeg → certified_FullSizeRender 4.jpeg</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="cf47b804-0b92-4eb0-9c9c-dea64e97f1da">cf47b804-0b92-4eb0-9c9c-dea64e97f1da</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>FullSizeRender.jpeg → certified_FullSizeRender.jpeg</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="33ece743-d18f-43a3-8845-a078ce6f56a0">33ece743-d18f-43a3-8845-a078ce6f56a0</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_0032.jpg → cert_failed_IMG_0032.jpg</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="f43c51a1-0e58-4956-b0e5-6d31da3855ca">f43c51a1-0e58-4956-b0e5-6d31da3855ca</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 620 is below required min_width 1920.</li></ul></details></td></tr>
-<tr><td>IMG_3896.png → certified_IMG_3896.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="4752508b-438e-436e-83ab-a84407556822">4752508b-438e-436e-83ab-a84407556822</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_3913.png → certified_IMG_3913.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="1423c630-8b36-4c0e-a726-e387bf34a55c">1423c630-8b36-4c0e-a726-e387bf34a55c</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_3948.png → certified_IMG_3948.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="227dd816-0b18-4fda-b6d9-536ee880e611">227dd816-0b18-4fda-b6d9-536ee880e611</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_3989.png → certified_IMG_3989.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="d8c98043-cce9-4150-92ee-6f706ae2c090">d8c98043-cce9-4150-92ee-6f706ae2c090</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_4105.png → certified_IMG_4105.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="6c6d851a-d648-4c9c-88da-83f9afbe419d">6c6d851a-d648-4c9c-88da-83f9afbe419d</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_4108.png → certified_IMG_4108.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="29db4106-8c1f-4486-8d79-623d8d575313">29db4106-8c1f-4486-8d79-623d8d575313</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_4110.png → certified_IMG_4110.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="61be630e-5103-4d87-9de7-10b38d170833">61be630e-5103-4d87-9de7-10b38d170833</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_6490.png → certified_IMG_6490.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="1d892ae5-0cdd-4a80-a839-645658b652fa">1d892ae5-0cdd-4a80-a839-645658b652fa</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_7864.JPEG → cert_failed_IMG_7864.JPEG</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="03ce19f8-0138-4bfa-96dc-a701b56dddc0">03ce19f8-0138-4bfa-96dc-a701b56dddc0</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1162 is below required min_width 1920.</li></ul></details></td></tr>
-<tr><td>IMG_7865.PNG → cert_failed_IMG_7865.PNG</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="b1910d71-6e96-4201-96a7-167437c1ebfc">b1910d71-6e96-4201-96a7-167437c1ebfc</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1179 is below required min_width 1920.</li></ul></details></td></tr>
-<tr><td>IMG_7866.PNG → cert_failed_IMG_7866.PNG</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="25760d4a-9eed-42e0-bcff-f93aec2b9448">25760d4a-9eed-42e0-bcff-f93aec2b9448</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1179 is below required min_width 1920.</li></ul></details></td></tr>
-<tr><td>IMG_7867.PNG → cert_failed_IMG_7867.PNG</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="b287ff17-156e-4461-88f4-03302d5322ba">b287ff17-156e-4461-88f4-03302d5322ba</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1179 is below required min_width 1920.</li></ul></details></td></tr>
-<tr><td>IMG_7868.PNG → cert_failed_IMG_7868.PNG</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="dc997fc6-3013-40e3-b817-7ab62db21241">dc997fc6-3013-40e3-b817-7ab62db21241</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1179 is below required min_width 1920.</li></ul></details></td></tr>
-<tr><td>IMG_7870.JPEG → cert_failed_IMG_7870.JPEG</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="39ee069f-97a1-4084-a6c0-af597fac1de9">39ee069f-97a1-4084-a6c0-af597fac1de9</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1151 is below required min_width 1920.</li></ul></details></td></tr>
-<tr><td>IMG_7871.PNG → cert_failed_IMG_7871.PNG</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="b9dfb4ac-b2de-41eb-9dc6-562c236f2a87">b9dfb4ac-b2de-41eb-9dc6-562c236f2a87</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1179 is below required min_width 1920.</li></ul></details></td></tr>
-<tr><td>IMG_7872.PNG → cert_failed_IMG_7872.PNG</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="63b6734f-fe40-4d41-9947-b937ddbe51ae">63b6734f-fe40-4d41-9947-b937ddbe51ae</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1179 is below required min_width 1920.</li></ul></details></td></tr>
-<tr><td>IMG_7881.PNG → cert_failed_IMG_7881.PNG</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="99192cfb-d59d-4ec0-a87f-05692e52c438">99192cfb-d59d-4ec0-a87f-05692e52c438</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1179 is below required min_width 1920.</li></ul></details></td></tr>
-<tr><td>IMG_7882.PNG → cert_failed_IMG_7882.PNG</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="f0221b79-4d30-449d-a6da-a481080e017f">f0221b79-4d30-449d-a6da-a481080e017f</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1179 is below required min_width 1920.</li></ul></details></td></tr>
-<tr><td>IMG_7883.PNG → cert_failed_IMG_7883.PNG</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="e1179535-26b8-4b69-87ef-776e72bf82d4">e1179535-26b8-4b69-87ef-776e72bf82d4</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1179 is below required min_width 1920.</li></ul></details></td></tr>
-<tr><td>IMG_7884.png → certified_IMG_7884.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="e5c71f91-7b32-493a-b593-75af98f54f07">e5c71f91-7b32-493a-b593-75af98f54f07</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_7885.png → certified_IMG_7885.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="72642462-6090-43a2-9d9b-9dd46a44cfda">72642462-6090-43a2-9d9b-9dd46a44cfda</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_7886 Background Removed.png → certified_IMG_7886 Background Removed.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="a94f2040-c52c-460a-bcad-9688628fb8f1">a94f2040-c52c-460a-bcad-9688628fb8f1</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_7886.png → certified_IMG_7886.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="142bb4e0-4e0c-4807-b34b-164d5318dd1e">142bb4e0-4e0c-4807-b34b-164d5318dd1e</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_7887.png → certified_IMG_7887.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="37964bd7-47c5-4f84-a021-771ccdcf45e8">37964bd7-47c5-4f84-a021-771ccdcf45e8</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_7888.png → certified_IMG_7888.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="0ba84c3f-538e-4039-bab5-0aedd6f966d9">0ba84c3f-538e-4039-bab5-0aedd6f966d9</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_7889.png → certified_IMG_7889.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="855142ef-3a2e-4d76-9830-d58b327e6e43">855142ef-3a2e-4d76-9830-d58b327e6e43</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_7890.png → certified_IMG_7890.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="7f7344fb-0307-4ad8-ac30-756424830773">7f7344fb-0307-4ad8-ac30-756424830773</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>IMG_7891.png → certified_IMG_7891.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="9f3348bf-7f4d-46b2-86d5-d8ea32059ead">9f3348bf-7f4d-46b2-86d5-d8ea32059ead</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
-<tr><td>Mya_Xmas.JPG → cert_failed_Mya_Xmas.JPG</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="9bf6c6bf-b617-41b1-91ef-be35138bb760">9bf6c6bf-b617-41b1-91ef-be35138bb760</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1800 is below required min_width 1920.</li></ul></details></td></tr>
-<tr><td>temp_image_AD8BFA3A-C1D9-479F-9BFA-60A22B244C81.JPEG → cert_failed_temp_image_AD8BFA3A-C1D9-479F-9BFA-60A22B244C81.JPEG</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="33b9b10c-3621-4ec0-b844-358a23e07119">33b9b10c-3621-4ec0-b844-358a23e07119</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1620 is below required min_width 1920.</li></ul></details></td></tr>
+          <tr><td>ChatGPT Image1.png → certified_ChatGPT Image1.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="1cf0fb99-70d3-4ae7-aa3d-2d5fbb0ee283">1cf0fb99-70d3-4ae7-aa3d-2d5fbb0ee283</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
+<tr><td>ChatGPT Image2.png → certified_ChatGPT Image2.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="2154dbaa-d5e4-421d-8f7d-c424467faf21">2154dbaa-d5e4-421d-8f7d-c424467faf21</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
+<tr><td>ChatGPT Image3.png → certified_ChatGPT Image3.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="3a21d649-2701-49f4-bf1f-41fc0ac9b13a">3a21d649-2701-49f4-bf1f-41fc0ac9b13a</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
+<tr><td>ComfyUI_00541_.png → cert_failed_ComfyUI_00541_.png</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="158ccfcf-600a-4fdc-805c-4c58cc3934c4">158ccfcf-600a-4fdc-805c-4c58cc3934c4</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image height 880 is below required min_height 1080.</li></ul></details></td></tr>
+<tr><td>ComfyUI_00543_.png → cert_failed_ComfyUI_00543_.png</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="c075d2af-4f12-40bf-9070-7e7b827444a6">c075d2af-4f12-40bf-9070-7e7b827444a6</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1024 is below required min_width 1080.</li><li>Image height 1024 is below required min_height 1080.</li></ul></details></td></tr>
+<tr><td>ComfyUI_00572_.png → cert_failed_ComfyUI_00572_.png</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="5c3c80af-2747-4339-82a7-26027ea67448">5c3c80af-2747-4339-82a7-26027ea67448</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 896 is below required min_width 1080.</li></ul></details></td></tr>
+<tr><td>ComfyUI_00776_.png → certified_ComfyUI_00776_.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="1bfe60e9-5859-413a-9e8b-1e496a4976be">1bfe60e9-5859-413a-9e8b-1e496a4976be</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
+<tr><td>ComfyUI_00777_.png → certified_ComfyUI_00777_.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="2c721d4f-1285-4cb5-89c2-1ad58d2b2f3d">2c721d4f-1285-4cb5-89c2-1ad58d2b2f3d</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
+<tr><td>ComfyUI_00779_.png → certified_ComfyUI_00779_.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="31f99dc2-c284-4ad6-8685-fa5439ff5b5c">31f99dc2-c284-4ad6-8685-fa5439ff5b5c</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
+<tr><td>ComfyUI_00781_.png → certified_ComfyUI_00781_.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="7f7f4d30-3fb6-446e-9577-47b6fd0c81c9">7f7f4d30-3fb6-446e-9577-47b6fd0c81c9</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
+<tr><td>ComfyUI_00782_.png → certified_ComfyUI_00782_.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="dd6f8eaf-255e-4ba1-bf4f-cef862dfde32">dd6f8eaf-255e-4ba1-bf4f-cef862dfde32</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
+<tr><td>Ernie-Image-Turbo_00015_.png → cert_failed_Ernie-Image-Turbo_00015_.png</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="03605491-beb5-4a08-b387-cb8ccdd8f4eb">03605491-beb5-4a08-b387-cb8ccdd8f4eb</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1024 is below required min_width 1080.</li><li>Image height 1024 is below required min_height 1080.</li></ul></details></td></tr>
+<tr><td>Ernie-Image-Turbo_00035_.png → cert_failed_Ernie-Image-Turbo_00035_.png</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="4d30d14b-3f32-4a10-ab99-b7dc70642584">4d30d14b-3f32-4a10-ab99-b7dc70642584</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1024 is below required min_width 1080.</li><li>Image height 1024 is below required min_height 1080.</li></ul></details></td></tr>
+<tr><td>Flux2_Klein_9b_kv_00001_.png → cert_failed_Flux2_Klein_9b_kv_00001_.png</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="bfca14ed-9dd0-419e-9675-d2e599100ac0">bfca14ed-9dd0-419e-9675-d2e599100ac0</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 880 is below required min_width 1080.</li></ul></details></td></tr>
+<tr><td>Gemini_Generated_Image_1.png → certified_Gemini_Generated_Image_1.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="550744df-d33b-4247-b78f-72aa9a732ab3">550744df-d33b-4247-b78f-72aa9a732ab3</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
+<tr><td>Gemini_Generated_Image_2.png → certified_Gemini_Generated_Image_2.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="f5f2407f-9c15-49bc-b2bb-995595b4d3a3">f5f2407f-9c15-49bc-b2bb-995595b4d3a3</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
+<tr><td>Gemini_Generated_Image_3.png → certified_Gemini_Generated_Image_3.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="cf4ca11a-57e9-42fe-88a2-f2707d66ed07">cf4ca11a-57e9-42fe-88a2-f2707d66ed07</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
+<tr><td>nano_banana_pro_00002_.png → cert_failed_nano_banana_pro_00002_.png</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="de215979-20c6-48a6-bfb9-f6cafd6ab1ec">de215979-20c6-48a6-bfb9-f6cafd6ab1ec</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image height 768 is below required min_height 1080.</li></ul></details></td></tr>
+<tr><td>Qwen_Edit_2511_00002_.png → cert_failed_Qwen_Edit_2511_00002_.png</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="cd780f82-06c2-4b20-b25a-b977905f86ea">cd780f82-06c2-4b20-b25a-b977905f86ea</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 880 is below required min_width 1080.</li></ul></details></td></tr>
+<tr><td>Seedream5.0_lite_00001_.png → certified_Seedream5.0_lite_00001_.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="c4b24826-3b27-4561-a791-e4a96ed51a10">c4b24826-3b27-4561-a791-e4a96ed51a10</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
+<tr><td>Seedream5.0_lite_00002_.png → certified_Seedream5.0_lite_00002_.png</td><td class="status-pass">PASSED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="214d76f2-d021-4457-b892-63298833a419">214d76f2-d021-4457-b892-63298833a419</td><td class="details-col"><span class="detail-ok">All specs met.</span></td></tr>
+<tr><td>Z-Image_00001_.png → cert_failed_Z-Image_00001_.png</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="7785795a-481d-4d9f-8afb-1ee92fc04671">7785795a-481d-4d9f-8afb-1ee92fc04671</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image width 1024 is below required min_width 1080.</li><li>Image height 1024 is below required min_height 1080.</li></ul></details></td></tr>
+<tr><td>Z_Image_00001_.png → cert_failed_Z_Image_00001_.png</td><td class="status-fail">FAILED</td><td style="max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-family: monospace; font-size: 12px; color: var(--text-secondary); cursor: default;" title="f7857685-f718-4b23-accc-7e8d47bec099">f7857685-f718-4b23-accc-7e8d47bec099</td><td class="details-col"><details class="fail-details"><summary>View Failure Details</summary><ul class="fail-list"><li>Image height 832 is below required min_height 1080.</li></ul></details></td></tr>
         </tbody>
       </table>
+      </div>
     </section>
 
     <footer>
