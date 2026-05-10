@@ -7,14 +7,6 @@ export const metadata = {
     "See HarteFact output: Gate 1 spec checks in the Streamlit UI, batch HTML reports from the CLI, and a workflow walkthrough.",
 };
 
-function ArrowIcon() {
-  return (
-    <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-    </svg>
-  );
-}
-
 export default function GalleryPage() {
   return (
     <article className="mx-auto max-w-5xl px-6 py-16">
@@ -56,10 +48,22 @@ export default function GalleryPage() {
           href="/examples/sample-report.html"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center gap-2 text-cyan-400 transition-colors hover:text-cyan-300"
+          className="group mt-6 block"
         >
-          View sample report
-          <ArrowIcon />
+          <div className="relative overflow-hidden rounded-lg border border-zinc-700 transition-all duration-200 group-hover:border-cyan-500/50 group-hover:shadow-lg group-hover:shadow-cyan-500/10">
+            <Image
+              src="/examples/report-preview.png"
+              alt="Hartefact QA Report showing batch results with pass/fail breakdown and filter controls"
+              width={1200}
+              height={675}
+              className="w-full transition-opacity duration-200 group-hover:opacity-90"
+            />
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+              <span className="rounded-full border border-white/20 bg-black/70 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
+                View sample report →
+              </span>
+            </div>
+          </div>
         </Link>
         <p className="mt-2 max-w-3xl text-xs text-zinc-500">
           Real output from a batch run of 36 assets against the Standard Web Image preset.
