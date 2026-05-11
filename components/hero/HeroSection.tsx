@@ -45,6 +45,14 @@ export function HeroSection() {
           animate={show({ opacity: 1, y: 0 })}
           transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
         >
+          AI image and video generators produce files with invisible problems — wrong resolution, codec mismatches, faces that drift, audio that falls out of sync. Hartefact catches them before they reach a client or a platform.
+        </motion.p>
+        <motion.p
+          className="mt-6 text-lg text-zinc-400 sm:text-xl md:text-2xl"
+          initial={{ opacity: 0, y: 8 }}
+          animate={show({ opacity: 1, y: 0 })}
+          transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
+        >
           Quality Management Tools and Benchmarking for the Digital Visual Arts.
         </motion.p>
         <motion.p

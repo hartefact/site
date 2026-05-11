@@ -40,8 +40,7 @@ export default function GalleryPage() {
       <section className="mb-16">
         <h2 className="text-2xl font-semibold text-zinc-100">Batch QA report</h2>
         <p className="mt-4 max-w-3xl text-sm text-zinc-400">
-          Run a folder of assets through the CLI and HarteFact produces a self-contained HTML report — no external
-          dependencies, opens in any browser. Filter by pass or fail, expand individual failure details, and hover any
+          Run a folder of assets through the CLI and Hartefact produces a self-contained HTML report — a single file, no login or software required, opens anywhere and can be shared with anyone. Filter by pass or fail, expand individual failure details, and hover any
           Run ID for the full audit reference.
         </p>
         <Link

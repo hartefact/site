@@ -39,10 +39,7 @@ export function IntroSection() {
           viewport={{ once: true }}
           transition={{ delay: 0.1, duration: 0.4 }}
         >
-          A model-agnostic scoring framework for AI-generated images and video.
-          Each dimension is a distinct axis of output quality. A gated pipeline
-          rules out fast failures cheaply, then runs deeper analysis only on
-          what survives.
+          Nine things that can go wrong with an AI deliverable. Three gates that catch them in order of cost. Each dimension is a distinct axis of output quality — a gated pipeline rules out fast failures cheaply, then runs deeper analysis only on what survives.
         </motion.p>
         <motion.p
           className="mt-3 max-w-3xl text-sm text-zinc-500"

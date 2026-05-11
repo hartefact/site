@@ -52,8 +52,7 @@ export function UseCasesSection() {
             What this does for you
           </h2>
           <p className="mt-3 max-w-2xl text-zinc-400">
-            Two primary jobs the framework does today — both real on AI image
-            and video workflows that have moved past pilot stage.
+            Two real problems. Both showing up in AI workflows right now.
           </p>
         </motion.div>
 
