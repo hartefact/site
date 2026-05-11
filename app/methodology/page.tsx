@@ -99,8 +99,7 @@ export default function MethodologyPage() {
           Methodology
         </h1>
         <p className="mt-4 max-w-3xl text-lg text-zinc-400">
-          A model-agnostic framework for measuring the quality of AI-generated
-          images and video. Nine dimensions, three gates, automated scorecards.
+          A structured way to measure whether AI-generated images and video are actually deliverable — technically, perceptually, and commercially. Nine dimensions, three gates, automated scorecards.
         </p>
         <p className="mt-3 max-w-3xl text-sm italic text-zinc-500">
           In video QA, &ldquo;artifact&rdquo; often names a defect. HarteFact
@@ -167,6 +166,8 @@ export default function MethodologyPage() {
         </h2>
         <p className="mt-3 max-w-3xl text-sm text-zinc-400">
           Three gates separate fast, cheap checks from expensive deep analysis.
+          Each gate is a checkpoint — content that fails Gate 1 never gets the
+          expensive Gate 2 analysis, which keeps costs low and feedback fast.
           Failed content gets immediate, specific feedback identifying the
           failure dimension — without the cost of downstream scoring.
         </p>

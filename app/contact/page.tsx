@@ -13,12 +13,12 @@ const targets = [
   {
     title: "Production studios & agencies",
     detail:
-      "Running AI generation in volume and need consistent, documentable QC. Managed-service pilots scoped per-asset with a session minimum.",
+      "Running AI generation in volume and need consistent, documentable QC. Structured pilots with a defined scope and asset floor — enough to produce meaningful benchmark data.",
   },
   {
     title: "Print-on-demand operators",
     detail:
-      "DTG / DTF pipelines with AI-assisted design steps. Pilots focus on Dimension 0 input validation and the alpha-edge composite metric.",
+      "DTG / DTF pipelines with AI-assisted design steps. Pilots focus on the two highest-leverage checks: catching bad inputs before generation, and flagging edge artifacts that show up in print.",
   },
   {
     title: "Brands & compliance teams",

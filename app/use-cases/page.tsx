@@ -76,9 +76,8 @@ export default function UseCasesPage() {
           How the framework shows up in real workflows
         </h1>
         <p className="mt-4 max-w-3xl text-lg text-zinc-400">
-          The methodology is the spine — a model-agnostic scoring framework
-          that doesn&apos;t change. Use cases are how that spine gets applied
-          to specific audiences and verticals.
+          The same QA framework, applied to three different pain points. If you
+          recognize your workflow below, that&apos;s the starting point.
         </p>
         <p className="mt-3 max-w-3xl text-sm text-zinc-500">
           New addendums and audiences land here as they emerge. If your
@@ -156,11 +155,10 @@ export default function UseCasesPage() {
           Pilot inquiries welcome
         </h2>
         <p className="mt-2 max-w-2xl text-sm text-zinc-400">
-          The framework is designed to extend. New verticals — VFX, game
-          cinematics, architectural visualization, music video, anything else
-          AI-assisted — typically land as addendums to the core methodology.
-          If your team is fighting trial-and-error friction with AI
-          deliverables, that&apos;s the conversation.
+          New workflows are added as they emerge. If you&apos;re dealing with
+          AI deliverable friction and don&apos;t see your situation here —
+          VFX, game cinematics, architectural visualization, music video, or
+          anything else AI-assisted — that&apos;s worth a conversation.
         </p>
         <Link
           href="/contact"
