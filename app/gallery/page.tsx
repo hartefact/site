@@ -76,13 +76,30 @@ export default function GalleryPage() {
           A three-minute walkthrough covering preset selection, single-file upload and scorecard, and a full batch run
           with the resulting HTML report, CSV, and JSON manifest.
         </p>
-        {/* TODO: replace with YouTube iframe or next/video once walkthrough is recorded */}
-        <div
-          className="mt-6 flex aspect-video w-full items-center justify-center rounded-lg border border-zinc-700 bg-zinc-900"
-          role="img"
-          aria-label="Video placeholder"
-        >
-          <p className="text-sm text-zinc-500">Video coming soon</p>
+        <div className="relative mt-6 overflow-hidden rounded-lg border border-zinc-700 cursor-default">
+          <Image
+            src="/examples/video-thumbnail.png"
+            alt="Hartefact Gate 1 workflow walkthrough"
+            width={1280}
+            height={720}
+            className="w-full opacity-80"
+          />
+          <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+            <div className="flex flex-col items-center gap-3">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-white/60 bg-black/50 backdrop-blur-sm">
+                <svg
+                  className="h-6 w-6 translate-x-0.5 text-white"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+              <span className="text-sm font-medium tracking-wide text-white/70">
+                Full walkthrough coming soon
+              </span>
+            </div>
+          </div>
         </div>
       </section>
     </article>
