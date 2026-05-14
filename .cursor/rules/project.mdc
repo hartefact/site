@@ -16,7 +16,7 @@ This is the public-facing marketing site for **Hartefact**, an independent QA fr
 
 ## Stack
 
-- Next.js 14 (App Router) · TypeScript · Tailwind CSS · Framer Motion (subtle animation only)
+- Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS · Framer Motion (subtle animation only)
 - Static-rendered Markdown-equivalent pages — no CMS, no DB, no auth, no API routes in Phase 1
 - Hosted on Vercel; CI is "git push to main"
 
@@ -26,10 +26,10 @@ This is the public-facing marketing site for **Hartefact**, an independent QA fr
 - `app/methodology/page.tsx` — the nine-dimension framework, three gates
 - `app/use-cases/page.tsx` — index of audiences (creators, studios, POD); designed to scale
 - `app/pod/page.tsx` — print-on-demand addendum (linked from `/use-cases`, not the nav)
-- `app/gallery/page.tsx` — examples ("Scorecards" once per-asset scoring ships)
+- `app/gallery/page.tsx` — examples route `/gallery` (nav unchanged): screenshot + sample HTML report + video placeholder; may evolve to scorecards later
 - `app/contact/page.tsx` — mailto-only pilot inquiries, no backend
 - `components/layout/{Navbar,Footer}.tsx` · `components/hero/HeroSection.tsx` · `components/home/{IntroSection,UseCasesSection}.tsx`
-- `data/galleryImages.ts` — gallery data (placeholder; replace with real outputs)
+- `public/examples/` — `ui-scorecard.png`, `sample-report.html`, `README.txt`
 - `docs/ai-video-qa-framework.md` — public copy of the framework spec mirrored from the Obsidian vault
 
 ## Content conventions
@@ -42,4 +42,4 @@ This is the public-facing marketing site for **Hartefact**, an independent QA fr
 
 ## Source-of-truth doc
 
-The canonical framework spec lives in the Obsidian vault at `Projects/Hartefact/Hartefact - Complete AI Video & Image Quality Assurance Framework.md`. The public methodology page is a derivation. When the spec and the site disagree, the spec wins; update the site to match.
+The canonical framework spec lives in the Obsidian vault at `Projects/Hartefact/Hartefact Digital - Complete AI Video & Image Quality Assurance Framework.md`. The public methodology page is a derivation. When the spec and the site disagree, the spec wins; update the site to match.

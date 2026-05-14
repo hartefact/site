@@ -18,7 +18,7 @@ The public-facing marketing site for **Hartefact**, an independent QA framework 
 
 ## Stack
 
-- Next.js 14 (App Router) · TypeScript · Tailwind CSS · Framer Motion (subtle animation only)
+- Next.js 16 (App Router) · React 19 · TypeScript · Tailwind CSS · Framer Motion (subtle animation only)
 - Static-rendered pages — no CMS, no DB, no auth, no API routes in Phase 1
 - Hosted on Vercel; CI is "git push to main"
 
@@ -30,12 +30,12 @@ The public-facing marketing site for **Hartefact**, an independent QA framework 
 | `app/methodology/page.tsx` | The nine-dimension framework, three gates |
 | `app/use-cases/page.tsx` | Index of audiences (creators, studios, POD); designed to scale |
 | `app/pod/page.tsx` | Print-on-demand addendum (linked from `/use-cases`, not the nav) |
-| `app/gallery/page.tsx` | Examples — will become "Scorecards" once per-asset scoring ships |
+| `app/gallery/page.tsx` | Examples (`/gallery`, nav unchanged) — screenshot, sample HTML batch report link, workflow video placeholder; may evolve into Scorecards when per-asset scoring ships |
 | `app/contact/page.tsx` | Mailto-only pilot inquiries, no backend |
 | `components/layout/{Navbar,Footer}.tsx` | Site chrome |
 | `components/hero/HeroSection.tsx` | Hero with wordmark image |
 | `components/home/{IntroSection,UseCasesSection}.tsx` | Homepage sections |
-| `data/galleryImages.ts` | Gallery data (placeholder; replace with real outputs) |
+| `public/examples/` | Marketing examples: `ui-scorecard.png`, `sample-report.html`, `README.txt` |
 | `docs/ai-video-qa-framework.md` | Public copy of the framework spec mirrored from the Obsidian vault |
 | `public/logo/` | Site-used logo assets (transparent backgrounds) |
 | `src/components/*.png` | Source logo assets pre-background-removal |
@@ -50,7 +50,7 @@ The public-facing marketing site for **Hartefact**, an independent QA framework 
 
 ## Source-of-truth doc
 
-The canonical framework spec lives in the Obsidian vault at `Projects/Hartefact/Hartefact - Complete AI Video & Image Quality Assurance Framework.md`. The public methodology page is a derivation. When the spec and the site disagree, the spec wins; update the site to match.
+The canonical framework spec lives in the Obsidian vault at `Projects/Hartefact/Hartefact Digital - Complete AI Video & Image Quality Assurance Framework.md`. The public methodology page is a derivation. When the spec and the site disagree, the spec wins; update the site to match.
 
 ---
 
