@@ -1,11 +1,11 @@
-# HarteFact — Phase 1
+# Hartefact — Phase 1
 
-The public-facing site for **HarteFact — Quality Management Tools and Benchmarking for the Digital Visual Arts**. The business is an independent QA framework and benchmarking authority for AI-generated visual content (image, video, and print-on-demand). The site's near-term job is to **publish methodology, build authority, and capture pilot inquiries** while the underlying QA pipeline is in active build (Phase 1).
+The public-facing site for **Hartefact** — *Quality Management Tools and Benchmarking for the Digital Visual Arts*. The business is an independent QA framework and benchmarking authority for AI-generated visual content (image, video, and print-on-demand). Copy on the site stresses **what breaks in real AI deliverables** (spec drift, temporal and sync issues, identity drift, etc.) and how the framework catches those failures **before handoff**. The site's near-term job is to **publish methodology, build authority, and capture pilot inquiries** while the underlying QA pipeline is in active build (Phase 1).
 
-> **Naming note.** The brand was rebranded from "HarteFact Digital" to **HarteFact** in April 2026 — the descriptive "Digital" suffix moved into the tagline ("for the Digital Visual Arts"), where it reads as descriptor rather than dated agency-style filler. The legal entity name and source repo folder may still reference the old form; only customer-facing surfaces were updated.
+> **Naming note.** The brand was repositioned from the legacy **HarteFact Digital** form in April 2026 — the "Digital" piece now lives only in the tagline ("for the Digital Visual Arts"). **In prose, metadata, and page copy, use `Hartefact` (lowercase `f`), not the logotype casing `HarteFact`.** The homepage wordmark image is still the approved **HarteFact** logotype; that dual convention is intentional. The legal entity name and the on-disk folder (`Hartefact_Digital/`) may still reference older casing.
 
 **Canonical project docs (use these for all work on this repo):**
-- **Framework spec:** `Hartefact Digital - Complete AI Video & Image Quality Assurance Framework.md` (in the Obsidian vault) — nine dimensions (originally drafted as "domains"), three gates, build sequence
+- **Framework spec:** vault `Projects/Hartefact/Hartefact Digital - Complete AI Video & Image Quality Assurance Framework.md` — nine dimensions (originally drafted as "domains"), three gates, build sequence
 - **POD addendum:** the print-on-demand metrics extension covering CMYK gamut, ink coverage, alpha-edge fringing, design placement, input validation
 - **Project context:** `src/docs/project-context.md..rtf` — mission, goals, audience, stack, content types
 - **Design intent:** `src/docs/design-intent.rtf` — visual philosophy, layout, typography, motion, anti-patterns
@@ -16,7 +16,8 @@ Before touching this repo, read [`AGENTS.md`](AGENTS.md) — it has the brand ca
 
 ## Stack
 
-- **Next.js 14** (App Router)
+- **Next.js 16** (App Router)
+- **React 19**
 - **TypeScript**
 - **Tailwind CSS**
 - **Framer Motion** (subtle animation only)
@@ -29,6 +30,13 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000).
+
+Before pushing substantive changes:
+
+```bash
+npm run lint   # eslint (Next.js 16+; there is no `next lint` subcommand anymore)
+npm run build
+```
 
 ## Deploys
 
@@ -55,28 +63,28 @@ Open [http://localhost:3000](http://localhost:3000).
   ```bash
   node scripts/remove-logo-backgrounds.mjs
   ```
-- **Usage:** Funnel = navbar, footer, gallery header, app icon. `name_logo.png` is the legacy **HARTEFACT DIGITAL** wordmark and should be kept as the original asset. `hartefact_wordmark.png` is the corrected cropped single-word **HarteFact** mark from `/Users/reidharte/Downloads/HarteFact Digital logo_cropped.png` and is used by the homepage hero.
+- **Usage:** Funnel = navbar, footer, and app icon (favicon). `name_logo.png` is the legacy **HARTEFACT DIGITAL** wordmark and should be kept as the original asset. `hartefact_wordmark.png` is the corrected cropped single-word logotype (visually **HarteFact**; see naming note above) from `/Users/reidharte/Downloads/HarteFact Digital logo_cropped.png` and is used by the homepage hero.
 - App favicon is set from the funnel logo (`app/icon.png`).
 
 ## Structure
 
-- `app/page.tsx` — Homepage (hero + use-cases teaser + framework summary)
-- `app/methodology/page.tsx` — QA framework overview (nine dimensions, three gates)
-- `app/use-cases/page.tsx` — Use-cases index (creators, studios, POD; data-driven, designed to scale as new addendums and audiences land)
-- `app/pod/page.tsx` — Print-on-demand addendum (color, ink, edges, input validation, placement) — linked from `/use-cases`
-- `app/gallery/page.tsx` — Examples (sample outputs today; rename to "Scorecards" once per-asset scorecards ship)
-- `app/contact/page.tsx` — Pilot inquiries (mailto-based, no backend)
-- `components/layout/` — Navbar, Footer
-- `components/hero/` — HeroSection (image wordmark in hero), BrandTitle3D (unused fallback CSS wordmark)
+- `app/page.tsx` — Homepage shell (composes the sections below)
+- `components/hero/HeroSection.tsx` — Hero: wordmark, supporting taglines (including plain-language grounding for what goes wrong with AI video/image outputs)
 - `components/home/UseCasesSection.tsx` — Home teaser for two primary audiences; links to `/use-cases` for the full list
-- `components/home/IntroSection.tsx` — Framework intro + nine-dimension grid
-- `components/gallery/` — GalleryGrid, GalleryItem, LightboxViewer, ImageLoader
-- `data/galleryImages.ts` — Gallery data (replace with real assets)
+- `components/home/IntroSection.tsx` — Framework intro (nine dimensions, three gates, gated pipeline copy) + dimension grid
+- `app/methodology/page.tsx` — QA framework overview (nine dimensions, three gates)
+- `app/use-cases/page.tsx` — Use-cases index (creators, studios, POD; frames the same framework against three pain points; designed to scale as new addendums and audiences land)
+- `app/pod/page.tsx` — Print-on-demand addendum (color, ink, edges, input validation, placement) — linked from `/use-cases`
+- `app/gallery/page.tsx` — Examples (still routed at **`/gallery`**; navbar label unchanged). Structured page: Gate 1 UI screenshot, HTML batch report sample, workflow video placeholder. When per-asset scorecards ship, this page may become **Scorecards** and/or move to **`/scorecards`**.
+- `app/contact/page.tsx` — Pilot inquiries (mailto-based, no backend)
+- `public/examples/` — Live marketing examples committed to repo: **`ui-scorecard.png`**, **`sample-report.html`**, plus **`README.txt`** documenting any assets operators must supply before deploy
+- `components/layout/` — Navbar, Footer
+- `components/hero/BrandTitle3D.tsx` — Unused fallback CSS wordmark
 
 ### Information architecture
 
-- **Methodology** is the spine — model-agnostic, versioned, doesn't change.
-- **Use cases** is a growing index. POD is one card today; future verticals (VFX, architectural viz, music video, etc.) land here as additional cards and, where warranted, dedicated addendum pages.
+- **Methodology** is the spine — model-agnostic, versioned, doesn't change. Page copy leads with whether outputs are **deliverable** (technical, perceptual, commercial) before diving into dimensions and gates.
+- **Use cases** is a growing index framed as **the same QA framework applied to different pain points**. POD is one card today; future verticals (VFX, architectural viz, music video, etc.) land here as additional cards and, where warranted, dedicated addendum pages.
 - A new idea earns a section before a page; a new page earns its place before a nav slot.
 
 ## Phase 1 scope (current)
@@ -85,7 +93,7 @@ Open [http://localhost:3000](http://localhost:3000).
 - Methodology page summarizing the framework (versioned)
 - Use-cases index page with three audiences (creators, studios, POD); designed to extend
 - POD addendum page (separate URL for SEO + linkability), linked from `/use-cases`
-- Examples gallery (sample outputs; future versions will display per-asset scorecards and the page will be renamed to "Scorecards")
+- Examples page (`/gallery`, nav label **Examples**): Streamlit screenshot, self-contained single-file HTML batch report sample (`sample-report.html`, no login or install required), workflow video placeholder; future per-asset scorecards may supersede or augment this route
 - Mailto-based contact for pilot inquiries
 - Accessible (keyboard, ARIA, focus management)
 - No auth, CMS, blog, or backend
@@ -94,7 +102,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 When Phase 1 + 1b of the QA pipeline ship and first benchmarks publish, add:
 - `/benchmarks` — model-by-model scorecard results
-- Per-asset scorecard rendering on the gallery page
+- Per-asset scorecard rendering (likely evolving the current Examples route `/gallery` or adding `/scorecards`)
 - Newsletter / RSS for benchmark publication cadence
 
 Deferred until product/service revenue justifies them: pricing page, dashboards, accounts, API docs, blog.
